@@ -73,38 +73,50 @@ document.querySelectorAll('.gallery-item, .feature, .contact-card').forEach(el =
     observer.observe(el);
 });
 
-// Sistema de Miniaturas - CORRIGIDO
-function initThumbnails() {
-    document.querySelectorAll('.gallery-item').forEach((item, itemIndex) => {
-        const thumbnails = item.querySelectorAll('.thumb');
-        const mainImages = item.querySelectorAll('.main-img');
+// SISTEMA DE MINIATURAS - VERSÃO SIMPLIFICADA E ROBUSTA
+window.addEventListener('load', function() {
+    console.log('Inicializando miniaturas...');
+    
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    console.log('Encontrados', galleryItems.length, 'produtos');
+    
+    galleryItems.forEach((item, itemIndex) => {
+        const thumbs = item.querySelectorAll('.thumb');
+        const mainImgs = item.querySelectorAll('.main-img');
         
-        if (thumbnails.length === 0 || mainImages.length === 0) return;
+        console.log(`Produto ${itemIndex}: ${thumbs.length} miniaturas, ${mainImgs.length} imagens principais`);
         
-        thumbnails.forEach((thumb, index) => {
+        thumbs.forEach((thumb, thumbIndex) => {
             thumb.addEventListener('click', function(e) {
                 e.preventDefault();
+                console.log(`Clicou na miniatura ${thumbIndex} do produto ${itemIndex}`);
                 
-                // Remove active de todos do item atual
-                thumbnails.forEach(t => t.classList.remove('active'));
-                mainImages.forEach(img => img.classList.remove('active'));
+                // Remove active de todas as miniaturas deste item
+                thumbs.forEach(t => {
+                    t.classList.remove('active');
+                });
                 
-                // Adiciona active no clicado
-                this.classList.add('active');
-                if (mainImages[index]) {
-                    mainImages[index].classList.add('active');
+                // Remove active de todas as imagens principais deste item
+                mainImgs.forEach(img => {
+                    img.classList.remove('active');
+                });
+                
+                // Adiciona active na miniatura clicada
+                thumb.classList.add('active');
+                
+                // Adiciona active na imagem principal correspondente
+                if (mainImgs[thumbIndex]) {
+                    mainImgs[thumbIndex].classList.add('active');
+                    console.log(`Ativou imagem principal ${thumbIndex}`);
+                } else {
+                    console.error(`Imagem principal ${thumbIndex} não encontrada!`);
                 }
             });
         });
     });
-}
-
-// Inicializar quando o DOM estiver pronto
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initThumbnails);
-} else {
-    initThumbnails();
-}
+    
+    console.log('Sistema de miniaturas inicializado!');
+});
 
 // Botão de compra - WhatsApp
 document.querySelectorAll('.btn-buy').forEach(button => {
