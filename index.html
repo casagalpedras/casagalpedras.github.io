@@ -30,18 +30,30 @@
 
     <!-- Hero Section -->
     <section id="inicio" class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">Arte Esculpida<br>em Pedra Natural</h1>
-            <p class="hero-subtitle">Peças únicas que celebram a beleza intemporal da natureza</p>
-            <a href="#colecao" class="btn-primary">Explorar Coleção</a>
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Arte Esculpida<br>em Pedra Natural</h1>
+                <p class="hero-subtitle">Peças únicas que celebram a beleza intemporal da natureza</p>
+                <a href="#colecao" class="btn-primary">Explorar Coleção</a>
+            </div>
+            <div class="hero-video">
+                <video autoplay muted loop playsinline>
+                    <source src="https://i.imgur.com/cD11MhW.mp4" type="video/mp4">
+                    Seu navegador não suporta vídeos.
+                </video>
+            </div>
         </div>
-        <div class="hero-overlay"></div>
     </section>
 
-    <!-- Banner Coleção -->
-    <section class="collection-banner">
+    <!-- Vídeo Showcase -->
+    <section class="video-showcase" style="display: none;">
         <div class="container">
-            <img src="https://i.imgur.com/SHeVIgt.jpg" alt="Nossa Coleção" class="banner-image">
+            <div class="video-container">
+                <video autoplay muted loop playsinline>
+                    <source src="https://i.imgur.com/cD11MhW.mp4" type="video/mp4">
+                    Seu navegador não suporta vídeos.
+                </video>
+            </div>
         </div>
     </section>
 
@@ -54,9 +66,15 @@
             <div class="gallery">
                 <!-- Item 1 - Bandeja Malu -->
                 <div class="gallery-item" data-category="bandejas">
-                    <div class="gallery-image">
-                        <img src="https://i.imgur.com/5grGAbA.jpg" alt="Bandeja Malu" class="img-primary">
-                        <img src="https://i.imgur.com/wMMjX7C.jpg" alt="Bandeja Malu - Detalhe" class="img-hover">
+                    <div class="gallery-image-with-thumbs">
+                        <div class="main-image-container">
+                            <img src="https://i.imgur.com/5grGAbA.jpg" alt="Bandeja Malu" class="main-img active">
+                            <img src="https://i.imgur.com/wMMjX7C.jpg" alt="Bandeja Malu - Detalhe" class="main-img">
+                        </div>
+                        <div class="thumbnail-container">
+                            <img src="https://i.imgur.com/5grGAbA.jpg" alt="Foto 1" class="thumb active" data-img="0">
+                            <img src="https://i.imgur.com/wMMjX7C.jpg" alt="Foto 2" class="thumb" data-img="1">
+                        </div>
                     </div>
                     <div class="gallery-info">
                         <h3>Bandeja Malu</h3>
@@ -71,9 +89,15 @@
 
                 <!-- Item 2 - Bandeja Dora -->
                 <div class="gallery-item" data-category="bandejas">
-                    <div class="gallery-image">
-                        <img src="https://i.imgur.com/EMTQIMc.jpg" alt="Bandeja Dora" class="img-primary">
-                        <img src="https://i.imgur.com/ceOfOz8.jpg" alt="Bandeja Dora - Detalhe" class="img-hover">
+                    <div class="gallery-image-with-thumbs">
+                        <div class="main-image-container">
+                            <img src="https://i.imgur.com/EMTQIMc.jpg" alt="Bandeja Dora" class="main-img active">
+                            <img src="https://i.imgur.com/ceOfOz8.jpg" alt="Bandeja Dora - Detalhe" class="main-img">
+                        </div>
+                        <div class="thumbnail-container">
+                            <img src="https://i.imgur.com/EMTQIMc.jpg" alt="Foto 1" class="thumb active" data-img="0">
+                            <img src="https://i.imgur.com/ceOfOz8.jpg" alt="Foto 2" class="thumb" data-img="1">
+                        </div>
                     </div>
                     <div class="gallery-info">
                         <h3>Bandeja Dora</h3>
@@ -88,9 +112,15 @@
 
                 <!-- Item 3 - Bandeja Sophia -->
                 <div class="gallery-item" data-category="bandejas">
-                    <div class="gallery-image">
-                        <img src="https://i.imgur.com/5xRWfom.jpg" alt="Bandeja Sophia" class="img-primary">
-                        <img src="https://i.imgur.com/R5d2UGt.jpg" alt="Bandeja Sophia - Detalhe" class="img-hover">
+                    <div class="gallery-image-with-thumbs">
+                        <div class="main-image-container">
+                            <img src="https://i.imgur.com/5xRWfom.jpg" alt="Bandeja Sophia" class="main-img active">
+                            <img src="https://i.imgur.com/R5d2UGt.jpg" alt="Bandeja Sophia - Detalhe" class="main-img">
+                        </div>
+                        <div class="thumbnail-container">
+                            <img src="https://i.imgur.com/5xRWfom.jpg" alt="Foto 1" class="thumb active" data-img="0">
+                            <img src="https://i.imgur.com/R5d2UGt.jpg" alt="Foto 2" class="thumb" data-img="1">
+                        </div>
                     </div>
                     <div class="gallery-info">
                         <h3>Bandeja Sophia</h3>
@@ -105,9 +135,15 @@
 
                 <!-- Item 4 - Bandeja Lisy -->
                 <div class="gallery-item" data-category="bandejas">
-                    <div class="gallery-image">
-                        <img src="https://i.imgur.com/ZlLLpTR.jpg" alt="Bandeja Lisy" class="img-primary">
-                        <img src="https://i.imgur.com/x5O3DOM.jpg" alt="Bandeja Lisy - Detalhe" class="img-hover">
+                    <div class="gallery-image-with-thumbs">
+                        <div class="main-image-container">
+                            <img src="https://i.imgur.com/ZlLLpTR.jpg" alt="Bandeja Lisy" class="main-img active">
+                            <img src="https://i.imgur.com/x5O3DOM.jpg" alt="Bandeja Lisy - Detalhe" class="main-img">
+                        </div>
+                        <div class="thumbnail-container">
+                            <img src="https://i.imgur.com/ZlLLpTR.jpg" alt="Foto 1" class="thumb active" data-img="0">
+                            <img src="https://i.imgur.com/x5O3DOM.jpg" alt="Foto 2" class="thumb" data-img="1">
+                        </div>
                     </div>
                     <div class="gallery-info">
                         <h3>Bandeja Lisy</h3>
@@ -122,9 +158,15 @@
 
                 <!-- Item 5 - Prato de Bolo Bart -->
                 <div class="gallery-item" data-category="utilitarios">
-                    <div class="gallery-image">
-                        <img src="https://i.imgur.com/225tu7V.jpg" alt="Prato de Bolo Bart" class="img-primary">
-                        <img src="https://i.imgur.com/225tu7V.jpg" alt="Prato de Bolo Bart - Detalhe" class="img-hover">
+                    <div class="gallery-image-with-thumbs">
+                        <div class="main-image-container">
+                            <img src="https://i.imgur.com/225tu7V.jpg" alt="Prato de Bolo Bart" class="main-img active">
+                            <img src="https://i.imgur.com/225tu7V.jpg" alt="Prato de Bolo Bart" class="main-img">
+                        </div>
+                        <div class="thumbnail-container">
+                            <img src="https://i.imgur.com/225tu7V.jpg" alt="Foto 1" class="thumb active" data-img="0">
+                            <img src="https://i.imgur.com/225tu7V.jpg" alt="Foto 1" class="thumb" data-img="1">
+                        </div>
                     </div>
                     <div class="gallery-info">
                         <h3>Prato de Bolo Bart</h3>
@@ -138,17 +180,19 @@
                 </div>
 
                 <!-- Item 6 - Mesa Uno -->
-                <div class="gallery-item gallery-item-large" data-category="mesas">
-                    <div class="gallery-image-multiple">
-                        <div class="main-images">
-                            <img src="https://i.imgur.com/DpdwgmD.jpg" alt="Mesa Uno A" class="img-primary active">
-                            <img src="https://i.imgur.com/tgQJjAq.jpg" alt="Mesa Uno A - Detalhe" class="img-hover">
+                <div class="gallery-item" data-category="mesas">
+                    <div class="gallery-image-with-thumbs">
+                        <div class="main-image-container">
+                            <img src="https://i.imgur.com/DpdwgmD.jpg" alt="Mesa Uno A" class="main-img active">
+                            <img src="https://i.imgur.com/tgQJjAq.jpg" alt="Mesa Uno A Detalhe" class="main-img">
+                            <img src="https://i.imgur.com/FYl3LyU.jpg" alt="Mesa Uno B" class="main-img">
+                            <img src="https://i.imgur.com/3wWrkW5.jpg" alt="Mesa Uno B Detalhe" class="main-img">
                         </div>
-                        <div class="thumbnail-grid">
-                            <img src="https://i.imgur.com/DpdwgmD.jpg" alt="Mesa A" class="thumbnail active" data-index="0">
-                            <img src="https://i.imgur.com/tgQJjAq.jpg" alt="Mesa A Detalhe" class="thumbnail" data-index="1">
-                            <img src="https://i.imgur.com/FYl3LyU.jpg" alt="Mesa B" class="thumbnail" data-index="2">
-                            <img src="https://i.imgur.com/3wWrkW5.jpg" alt="Mesa B Detalhe" class="thumbnail" data-index="3">
+                        <div class="thumbnail-container">
+                            <img src="https://i.imgur.com/DpdwgmD.jpg" alt="Foto 1" class="thumb active" data-img="0">
+                            <img src="https://i.imgur.com/tgQJjAq.jpg" alt="Foto 2" class="thumb" data-img="1">
+                            <img src="https://i.imgur.com/FYl3LyU.jpg" alt="Foto 3" class="thumb" data-img="2">
+                            <img src="https://i.imgur.com/3wWrkW5.jpg" alt="Foto 4" class="thumb" data-img="3">
                         </div>
                     </div>
                     <div class="gallery-info">
@@ -165,9 +209,15 @@
 
                 <!-- Item 7 - Bandeja Aura 25x15 -->
                 <div class="gallery-item" data-category="bandejas">
-                    <div class="gallery-image">
-                        <img src="https://i.imgur.com/VeGlMlk.jpg" alt="Bandeja Aura 25x15" class="img-primary">
-                        <img src="https://i.imgur.com/mjcFNgJ.jpg" alt="Bandeja Aura - Detalhe" class="img-hover">
+                    <div class="gallery-image-with-thumbs">
+                        <div class="main-image-container">
+                            <img src="https://i.imgur.com/VeGlMlk.jpg" alt="Bandeja Aura 25x15" class="main-img active">
+                            <img src="https://i.imgur.com/mjcFNgJ.jpg" alt="Bandeja Aura - Detalhe" class="main-img">
+                        </div>
+                        <div class="thumbnail-container">
+                            <img src="https://i.imgur.com/VeGlMlk.jpg" alt="Foto 1" class="thumb active" data-img="0">
+                            <img src="https://i.imgur.com/mjcFNgJ.jpg" alt="Foto 2" class="thumb" data-img="1">
+                        </div>
                     </div>
                     <div class="gallery-info">
                         <h3>Bandeja Aura</h3>
@@ -182,9 +232,15 @@
 
                 <!-- Item 8 - Bandeja Aura 25x30 -->
                 <div class="gallery-item" data-category="bandejas">
-                    <div class="gallery-image">
-                        <img src="https://i.imgur.com/aZVCU2L.jpg" alt="Bandeja Aura 25x30" class="img-primary">
-                        <img src="https://i.imgur.com/mjcFNgJ.jpg" alt="Bandeja Aura - Detalhe" class="img-hover">
+                    <div class="gallery-image-with-thumbs">
+                        <div class="main-image-container">
+                            <img src="https://i.imgur.com/aZVCU2L.jpg" alt="Bandeja Aura 25x30" class="main-img active">
+                            <img src="https://i.imgur.com/mjcFNgJ.jpg" alt="Bandeja Aura - Detalhe" class="main-img">
+                        </div>
+                        <div class="thumbnail-container">
+                            <img src="https://i.imgur.com/aZVCU2L.jpg" alt="Foto 1" class="thumb active" data-img="0">
+                            <img src="https://i.imgur.com/mjcFNgJ.jpg" alt="Foto 2" class="thumb" data-img="1">
+                        </div>
                     </div>
                     <div class="gallery-info">
                         <h3>Bandeja Aura Grande</h3>
@@ -199,9 +255,15 @@
 
                 <!-- Item 9 - Caixa Pandora -->
                 <div class="gallery-item" data-category="decoracao">
-                    <div class="gallery-image">
-                        <img src="https://i.imgur.com/ruIt2N3.jpg" alt="Caixa Pandora" class="img-primary">
-                        <img src="https://i.imgur.com/mjcFNgJ.jpg" alt="Caixa Pandora - Detalhe" class="img-hover">
+                    <div class="gallery-image-with-thumbs">
+                        <div class="main-image-container">
+                            <img src="https://i.imgur.com/ruIt2N3.jpg" alt="Caixa Pandora" class="main-img active">
+                            <img src="https://i.imgur.com/mjcFNgJ.jpg" alt="Caixa Pandora - Detalhe" class="main-img">
+                        </div>
+                        <div class="thumbnail-container">
+                            <img src="https://i.imgur.com/ruIt2N3.jpg" alt="Foto 1" class="thumb active" data-img="0">
+                            <img src="https://i.imgur.com/mjcFNgJ.jpg" alt="Foto 2" class="thumb" data-img="1">
+                        </div>
                     </div>
                     <div class="gallery-info">
                         <h3>Caixa Pandora</h3>
@@ -216,9 +278,15 @@
 
                 <!-- Item 10 - Vitrine Pandora -->
                 <div class="gallery-item" data-category="decoracao">
-                    <div class="gallery-image">
-                        <img src="https://i.imgur.com/pn69Q9O.jpg" alt="Vitrine Pandora" class="img-primary">
-                        <img src="https://i.imgur.com/YCtMytH.jpg" alt="Vitrine Pandora - Detalhe" class="img-hover">
+                    <div class="gallery-image-with-thumbs">
+                        <div class="main-image-container">
+                            <img src="https://i.imgur.com/pn69Q9O.jpg" alt="Vitrine Pandora" class="main-img active">
+                            <img src="https://i.imgur.com/YCtMytH.jpg" alt="Vitrine Pandora - Detalhe" class="main-img">
+                        </div>
+                        <div class="thumbnail-container">
+                            <img src="https://i.imgur.com/pn69Q9O.jpg" alt="Foto 1" class="thumb active" data-img="0">
+                            <img src="https://i.imgur.com/YCtMytH.jpg" alt="Foto 2" class="thumb" data-img="1">
+                        </div>
                     </div>
                     <div class="gallery-info">
                         <h3>Vitrine Pandora</h3>
