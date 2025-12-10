@@ -73,12 +73,45 @@ document.querySelectorAll('.gallery-item, .feature, .contact-card').forEach(el =
     observer.observe(el);
 });
 
+// Sistema de Miniaturas - CORRIGIDO
+function initThumbnails() {
+    document.querySelectorAll('.gallery-item').forEach((item, itemIndex) => {
+        const thumbnails = item.querySelectorAll('.thumb');
+        const mainImages = item.querySelectorAll('.main-img');
+        
+        if (thumbnails.length === 0 || mainImages.length === 0) return;
+        
+        thumbnails.forEach((thumb, index) => {
+            thumb.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active de todos do item atual
+                thumbnails.forEach(t => t.classList.remove('active'));
+                mainImages.forEach(img => img.classList.remove('active'));
+                
+                // Adiciona active no clicado
+                this.classList.add('active');
+                if (mainImages[index]) {
+                    mainImages[index].classList.add('active');
+                }
+            });
+        });
+    });
+}
+
+// Inicializar quando o DOM estiver pronto
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initThumbnails);
+} else {
+    initThumbnails();
+}
+
 // Botão de compra - WhatsApp
 document.querySelectorAll('.btn-buy').forEach(button => {
     button.addEventListener('click', (e) => {
         const productName = e.target.getAttribute('data-product');
         const sizes = e.target.getAttribute('data-sizes');
-        const whatsappNumber = '5527998242810'; // Número do WhatsApp
+        const whatsappNumber = '5527998242810';
         
         let message = `Olá! Gostaria de comprar: *${productName}*\n\n`;
         
@@ -92,37 +125,6 @@ document.querySelectorAll('.btn-buy').forEach(button => {
     });
 });
 
-// Mesa Uno - Galeria de miniaturas
-const mesaUnoItem = document.querySelector('.gallery-item-large');
-if (mesaUnoItem) {
-    const thumbnails = mesaUnoItem.querySelectorAll('.thumbnail');
-    const mainImages = mesaUnoItem.querySelectorAll('.main-images img');
-    
-    // Array com os URLs das imagens
-    const imageUrls = [
-        'https://i.imgur.com/DpdwgmD.jpg',
-        'https://i.imgur.com/tgQJjAq.jpg',
-        'https://i.imgur.com/FYl3LyU.jpg',
-        'https://i.imgur.com/3wWrkW5.jpg'
-    ];
-    
-    thumbnails.forEach((thumb, index) => {
-        thumb.addEventListener('click', () => {
-            // Remove active de todos
-            thumbnails.forEach(t => t.classList.remove('active'));
-            mainImages.forEach(img => img.classList.remove('active'));
-            
-            // Adiciona active no clicado
-            thumb.classList.add('active');
-            
-            // Atualiza a imagem principal
-            const primaryImg = mainImages[0];
-            primaryImg.src = imageUrls[index];
-            primaryImg.classList.add('active');
-        });
-    });
-}
-
 // Efeito parallax suave no hero
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
@@ -132,10 +134,10 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Preload das imagens hover para transição suave
-document.addEventListener('DOMContentLoaded', () => {
-    const hoverImages = document.querySelectorAll('.img-hover');
-    hoverImages.forEach(img => {
+// Preload das imagens para transição suave
+window.addEventListener('load', () => {
+    const allImages = document.querySelectorAll('.main-img, .thumb');
+    allImages.forEach(img => {
         const tempImg = new Image();
         tempImg.src = img.src;
     });
