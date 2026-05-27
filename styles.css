@@ -762,3 +762,19 @@ section {
     object-fit: cover;
     border-radius: 3px;
 }
+
+.gift-single-img {
+    width: 240px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 3px;
+    flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+    .gift-single-img {
+        width: 100%;
+        max-width: 280px;
+        height: 320px;
+    }
+}
