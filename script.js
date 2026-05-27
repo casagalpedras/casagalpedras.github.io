@@ -85,65 +85,63 @@ document.querySelectorAll('.gallery-item').forEach(item => {
 });
 
 // MODAL DE DETALHES
-const modal = document.getElementById('productModal');
-const modalMainImg = document.getElementById('modalMainImg');
-const modalThumbs = document.getElementById('modalThumbs');
-const modalName = document.getElementById('modalName');
-const modalDesc = document.getElementById('modalDesc');
-const modalSizes = document.getElementById('modalSizes');
-const modalPrice = document.getElementById('modalPrice');
-const modalBuyBtn = document.getElementById('modalBuyBtn');
-const modalGiftCheck = document.getElementById('modalGiftCheck');
-
-document.querySelectorAll('.btn-details').forEach(btn => {
-    btn.addEventListener('click', () => {
+document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('btn-details')) {
+        const btn = e.target;
         const data = btn.dataset;
-        modalName.textContent = data.product;
-        modalDesc.textContent = data.desc;
-        modalSizes.textContent = data.sizes;
+
+        document.getElementById('modalName').textContent = data.product;
+        document.getElementById('modalDesc').textContent = data.desc;
+        document.getElementById('modalSizes').textContent = data.sizes;
 
         const card = btn.closest('.gallery-info');
         const priceEl = card.querySelector('.price');
         const priceDetailEl = card.querySelector('.price-detail');
-        modalPrice.textContent = priceEl ? priceEl.textContent : '';
-        if (priceDetailEl) {
-            modalPrice.textContent += ' — ' + priceDetailEl.textContent;
-        }
+        let priceText = priceEl ? priceEl.textContent : '';
+        if (priceDetailEl) priceText += ' — ' + priceDetailEl.textContent;
+        document.getElementById('modalPrice').textContent = priceText;
 
-        modalBuyBtn.dataset.product = data.product;
-        modalBuyBtn.dataset.sizes = data.sizesWhatsapp;
-        modalGiftCheck.checked = false;
+        document.getElementById('modalBuyBtn').dataset.product = data.product;
+        document.getElementById('modalBuyBtn').dataset.sizes = data.sizesWhatsapp || '';
+        document.getElementById('modalGiftCheck').checked = false;
 
         const imgs = [data.img1, data.img2, data.img3, data.img4].filter(Boolean);
-        modalMainImg.src = imgs[0];
-        modalThumbs.innerHTML = '';
+        document.getElementById('modalMainImg').src = imgs[0];
+
+        const thumbsContainer = document.getElementById('modalThumbs');
+        thumbsContainer.innerHTML = '';
         imgs.forEach((src, i) => {
             const thumb = document.createElement('img');
             thumb.src = src;
             thumb.alt = 'Foto ' + (i + 1);
             if (i === 0) thumb.classList.add('active');
             thumb.addEventListener('click', () => {
-                modalMainImg.src = src;
-                modalThumbs.querySelectorAll('img').forEach(t => t.classList.remove('active'));
+                document.getElementById('modalMainImg').src = src;
+                thumbsContainer.querySelectorAll('img').forEach(t => t.classList.remove('active'));
                 thumb.classList.add('active');
             });
-            modalThumbs.appendChild(thumb);
+            thumbsContainer.appendChild(thumb);
         });
 
-        modal.classList.add('active');
+        document.getElementById('productModal').classList.add('active');
         document.body.style.overflow = 'hidden';
-    });
+    }
 });
 
 // Fechar modal
-document.querySelector('.modal-overlay').addEventListener('click', closeModal);
-document.querySelector('.modal-close').addEventListener('click', closeModal);
-document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('modal-overlay') || e.target.classList.contains('modal-close')) {
+        document.getElementById('productModal').classList.remove('active');
+        document.body.style.overflow = '';
+    }
+});
 
-function closeModal() {
-    modal.classList.remove('active');
-    document.body.style.overflow = '';
-}
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        document.getElementById('productModal').classList.remove('active');
+        document.body.style.overflow = '';
+    }
+});
 
 // WhatsApp
 document.querySelectorAll('.btn-buy').forEach(button => {
@@ -153,8 +151,10 @@ document.querySelectorAll('.btn-buy').forEach(button => {
         const whatsappNumber = '5527998242810';
 
         let wantsGiftBox = false;
-        if (modal.classList.contains('active')) {
-            wantsGiftBox = modalGiftCheck.checked;
+        const productModal = document.getElementById('productModal');
+        if (productModal && productModal.classList.contains('active')) {
+            const giftCheck = document.getElementById('modalGiftCheck');
+            wantsGiftBox = giftCheck && giftCheck.checked;
         }
 
         let message = `Olá! Gostaria de comprar: *${productName}*\n\n`;
