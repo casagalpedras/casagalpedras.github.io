@@ -142,13 +142,13 @@ h1, h2, h3 {
 
 /* Hero Section */
 .hero {
-    min-height: 100vh;
+    min-height: auto;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     background: var(--color-light);
-    padding: 8rem 0 4rem;
+    padding: 7rem 0 3rem;
 }
 
 .hero-container {
