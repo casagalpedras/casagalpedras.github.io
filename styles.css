@@ -318,7 +318,7 @@ section {
 }
 
 .gallery-item {
-    background: var(--color-white);
+    background: transparent;
     border-radius: 2px;
     overflow: hidden;
     transition: var(--transition);
@@ -376,7 +376,7 @@ section {
     gap: 0.5rem;
     padding: 0.75rem;
     justify-content: center;
-    background: var(--color-light);
+    background: transparent;
 }
 
 .thumb {
