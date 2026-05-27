@@ -7,7 +7,9 @@
     --color-text: #3d3935;
     --color-text-light: #6b6662;
     --color-gold: #d4af37;
-    
+    --color-green: #3b2a1a;
+    --color-green-light: #4d3926;
+
     --font-display: 'Cormorant Garamond', serif;
     --font-body: 'Montserrat', sans-serif;
     
@@ -102,7 +104,7 @@ h1, h2, h3 {
     font-size: 0.9rem;
     font-weight: 400;
     letter-spacing: 0.05em;
-    text-transform: uppercase;
+    text-transform: none;
     transition: var(--transition);
     position: relative;
 }
@@ -114,7 +116,7 @@ h1, h2, h3 {
     left: 0;
     width: 0;
     height: 1px;
-    background: var(--color-secondary);
+    background: var(--color-green);
     transition: var(--transition);
 }
 
@@ -236,7 +238,7 @@ h1, h2, h3 {
     font-size: 0.9rem;
     font-weight: 400;
     letter-spacing: 0.1em;
-    text-transform: uppercase;
+    text-transform: none;
     transition: var(--transition);
     border: none;
     cursor: pointer;
@@ -275,9 +277,9 @@ h1, h2, h3 {
 }
 
 .btn-buy:hover {
-    background: #b8941f;
+    background: var(--color-green);
     transform: translateY(-2px);
-    box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
+    box-shadow: 0 5px 20px rgba(45, 74, 62, 0.4);
 }
 
 /* Sections */
@@ -299,6 +301,12 @@ section {
     max-width: 600px;
     margin: 0 auto 4rem;
     font-size: 1.1rem;
+}
+
+.collection {
+    position: relative;
+    z-index: 2;
+    background: var(--color-light);
 }
 
 /* Gallery */
@@ -436,7 +444,7 @@ section {
 
 /* About Section */
 .about {
-    background: var(--color-white);
+    background: var(--color-green);
 }
 
 .about-content {
@@ -449,12 +457,12 @@ section {
 .about-text h2 {
     font-size: 2.5rem;
     margin-bottom: 2rem;
-    color: var(--color-primary);
+    color: var(--color-white);
 }
 
 .about-text p {
     margin-bottom: 1.5rem;
-    color: var(--color-text-light);
+    color: rgba(255, 255, 255, 0.85);
     line-height: 1.8;
 }
 
@@ -466,18 +474,18 @@ section {
 
 .feature {
     padding: 2rem;
-    background: var(--color-light);
-    border-left: 3px solid var(--color-secondary);
+    background: rgba(255, 255, 255, 0.08);
+    border-left: 3px solid var(--color-gold);
 }
 
 .feature h3 {
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
-    color: var(--color-primary);
+    color: var(--color-white);
 }
 
 .feature p {
-    color: var(--color-text-light);
+    color: rgba(255, 255, 255, 0.75);
 }
 
 /* Contact Section */
@@ -499,7 +507,7 @@ section {
 .contact-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-    border-color: var(--color-secondary);
+    border-color: var(--color-green);
 }
 
 .contact-card h3 {
@@ -562,7 +570,7 @@ section {
 
 /* Footer */
 .footer {
-    background: var(--color-primary);
+    background: var(--color-green);
     color: rgba(255, 255, 255, 0.8);
     text-align: center;
     padding: 3rem 0;
@@ -679,55 +687,78 @@ section {
     font-weight: 400;
 }
 
-.gift-box-banner {
-    background: var(--color-white);
-    padding: 3rem 0;
+.gift-box-banner-inline {
+    background: var(--color-green);
+    padding: 3.5rem 0;
+    margin-bottom: 3rem;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    width: 100vw;
 }
 
 .gift-box-content {
-    max-width: 700px;
+    max-width: 900px;
     margin: 0 auto;
     display: flex;
     align-items: center;
-    gap: 2rem;
-    padding: 2rem;
-    border: 1px solid rgba(212, 175, 55, 0.3);
-    border-radius: 4px;
+    gap: 2.5rem;
+    padding: 2.5rem 3rem;
 }
 
 .gift-box-content img {
-    width: 220px;
-    height: 280px;
+    width: 240px;
+    height: 300px;
     object-fit: cover;
     border-radius: 4px;
+    flex-shrink: 0;
+    border: 1px solid rgba(212, 175, 55, 0.3);
 }
 
 .gift-box-text h3 {
-    font-size: 1.8rem;
-    color: var(--color-primary);
-    margin-bottom: 0.5rem;
+    font-size: 2.2rem;
+    color: var(--color-white);
+    margin-bottom: 0.75rem;
     font-family: var(--font-display);
 }
 
 .gift-box-text p {
-    color: var(--color-text-light);
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin-bottom: 1rem;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
 }
 
 .gift-box-text .price {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
+    color: var(--color-gold);
+    font-family: var(--font-display);
 }
 
 @media (max-width: 768px) {
+    .gift-gallery {
+        width: 100%;
+        max-width: 320px;
+    }
+
     .gift-box-content {
         flex-direction: column;
         text-align: center;
+        padding: 2rem 1.5rem;
     }
-    .gift-box-content img {
-        width: 100%;
-        max-width: 300px;
-        height: 350px;
-    }
+}
+
+.gift-gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    flex-shrink: 0;
+    width: 340px;
+}
+
+.gift-gallery img,
+.gift-gallery video {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 3px;
 }

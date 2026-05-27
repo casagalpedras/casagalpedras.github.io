@@ -145,14 +145,6 @@ document.querySelectorAll('.btn-buy').forEach(button => {
     });
 });
 
-// Efeito parallax suave no hero
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const hero = document.querySelector('.hero');
-    if (hero && scrolled < window.innerHeight) {
-        hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-    }
-});
 
 // Preload das imagens para transição suave
 window.addEventListener('load', () => {
