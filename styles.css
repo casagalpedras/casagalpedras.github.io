@@ -503,7 +503,7 @@ section {
     background: transparent;
     padding: 3rem 2rem;
     text-align: center;
-    border: 1px solid rgba(139, 125, 107, 0.2);
+    border: none;
     transition: var(--transition);
 }
 
