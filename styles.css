@@ -309,6 +309,7 @@ section {
     position: relative;
     z-index: 2;
     background: var(--color-light);
+    padding: 4rem 0;
 }
 
 /* Gallery */
