@@ -118,20 +118,28 @@ window.addEventListener('load', function() {
     console.log('Sistema de miniaturas inicializado!');
 });
 
-// Botão de compra - WhatsApp
+// Botão de compra - WhatsApp (com opção de caixa presente)
 document.querySelectorAll('.btn-buy').forEach(button => {
     button.addEventListener('click', (e) => {
         const productName = e.target.getAttribute('data-product');
         const sizes = e.target.getAttribute('data-sizes');
         const whatsappNumber = '5527998242810';
-        
+
+        const galleryInfo = e.target.closest('.gallery-info');
+        const giftCheck = galleryInfo.querySelector('.gift-box-check');
+        const wantsGiftBox = giftCheck && giftCheck.checked;
+
         let message = `Olá! Gostaria de comprar: *${productName}*\n\n`;
-        
+
         if (sizes) {
             message += `Tamanhos/Opções disponíveis:\n${sizes.replace(/\|/g, '\n')}\n\n`;
-            message += `Por favor, me informe qual tamanho deseja.`;
+            message += `Por favor, me informe qual tamanho deseja.\n\n`;
         }
-        
+
+        if (wantsGiftBox) {
+            message += `🎁 *Com Caixa Presente (+R$ 40,00)*\n`;
+        }
+
         const encodedMessage = encodeURIComponent(message);
         window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
     });
