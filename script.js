@@ -86,8 +86,14 @@ document.querySelectorAll('.gallery-item').forEach(item => {
 
 // MODAL DE DETALHES
 document.addEventListener('click', function(e) {
+    let btn = null;
     if (e.target.classList.contains('btn-details')) {
-        const btn = e.target;
+        btn = e.target;
+    } else if (e.target.closest('.main-image-container')) {
+        btn = e.target.closest('.gallery-item').querySelector('.btn-details');
+    }
+
+    if (btn) {
         const data = btn.dataset;
 
         document.getElementById('modalName').textContent = data.product;
