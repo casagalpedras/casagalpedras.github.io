@@ -781,3 +781,170 @@ section {
         height: 320px;
     }
 }
+
+.card-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.btn-details {
+    display: block;
+    width: 100%;
+    padding: 0.7rem;
+    background: transparent;
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 400;
+    text-align: center;
+    border: 1px solid rgba(59, 42, 26, 0.3);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-details:hover {
+    background: var(--color-green);
+    color: white;
+    border-color: var(--color-green);
+}
+
+.main-image-container {
+    cursor: pointer;
+}
+
+/* Modal */
+.product-modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-modal.active {
+    display: flex;
+}
+
+.modal-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+}
+
+.modal-content {
+    position: relative;
+    background: var(--color-light);
+    max-width: 900px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-radius: 4px;
+}
+
+.modal-close {
+    position: absolute;
+    top: 1rem; right: 1rem;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--color-text);
+    z-index: 1;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-close:hover {
+    color: var(--color-green);
+}
+
+.modal-images {
+    padding: 1.5rem;
+}
+
+.modal-main-img-container {
+    width: 100%;
+    aspect-ratio: 4/5;
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+}
+
+.modal-main-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.modal-thumbs {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.modal-thumbs img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    cursor: pointer;
+    opacity: 0.5;
+    border: 2px solid transparent;
+    transition: var(--transition);
+}
+
+.modal-thumbs img:hover {
+    opacity: 0.8;
+}
+
+.modal-thumbs img.active {
+    opacity: 1;
+    border-color: var(--color-green);
+}
+
+.modal-info {
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.modal-info h2 {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 400;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+}
+
+.modal-desc {
+    color: var(--color-text-light);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+.modal-sizes {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+
+.modal-info .price {
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+    .modal-content {
+        grid-template-columns: 1fr;
+        max-height: 95vh;
+    }
+    .modal-info {
+        padding: 1.5rem;
+    }
+}

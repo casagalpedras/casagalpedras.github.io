@@ -1,7 +1,6 @@
 // Menu Mobile Toggle
 const menuToggle = document.querySelector('.menu-toggle');
 const navMenu = document.querySelector('.nav-menu');
-
 if (menuToggle) {
     menuToggle.addEventListener('click', () => {
         navMenu.classList.toggle('active');
@@ -9,37 +8,27 @@ if (menuToggle) {
     });
 }
 
-// Fechar menu ao clicar em um link
 document.querySelectorAll('.nav-menu a').forEach(link => {
     link.addEventListener('click', () => {
         navMenu.classList.remove('active');
-        if (menuToggle) {
-            menuToggle.classList.remove('active');
-        }
+        if (menuToggle) menuToggle.classList.remove('active');
     });
 });
 
-// Scroll suave para âncoras
+// Scroll suave
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
+    anchor.addEventListener('click', function(e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 });
 
-// Navbar com efeito ao scroll
+// Navbar scroll
 let lastScroll = 0;
 const navbar = document.querySelector('.navbar');
-
 window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
-    
     if (currentScroll > 100) {
         navbar.style.padding = '1rem 0';
         navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
@@ -47,16 +36,10 @@ window.addEventListener('scroll', () => {
         navbar.style.padding = '1.5rem 0';
         navbar.style.boxShadow = 'none';
     }
-    
     lastScroll = currentScroll;
 });
 
-// Animação dos itens ao scroll
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
+// Scroll reveal
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -64,7 +47,7 @@ const observer = new IntersectionObserver((entries) => {
             entry.target.style.transform = 'translateY(0)';
         }
     });
-}, observerOptions);
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
 document.querySelectorAll('.gallery-item, .feature, .contact-card').forEach(el => {
     el.style.opacity = '0';
@@ -73,84 +56,124 @@ document.querySelectorAll('.gallery-item, .feature, .contact-card').forEach(el =
     observer.observe(el);
 });
 
-// SISTEMA DE MINIATURAS - VERSÃO SIMPLIFICADA E ROBUSTA
-window.addEventListener('load', function() {
-    console.log('Inicializando miniaturas...');
-    
-    const galleryItems = document.querySelectorAll('.gallery-item');
-    console.log('Encontrados', galleryItems.length, 'produtos');
-    
-    galleryItems.forEach((item, itemIndex) => {
-        const thumbs = item.querySelectorAll('.thumb');
-        const mainImgs = item.querySelectorAll('.main-img');
-        
-        console.log(`Produto ${itemIndex}: ${thumbs.length} miniaturas, ${mainImgs.length} imagens principais`);
-        
-        thumbs.forEach((thumb, thumbIndex) => {
-            thumb.addEventListener('click', function(e) {
-                e.preventDefault();
-                console.log(`Clicou na miniatura ${thumbIndex} do produto ${itemIndex}`);
-                
-                // Remove active de todas as miniaturas deste item
-                thumbs.forEach(t => {
-                    t.classList.remove('active');
-                });
-                
-                // Remove active de todas as imagens principais deste item
-                mainImgs.forEach(img => {
-                    img.classList.remove('active');
-                });
-                
-                // Adiciona active na miniatura clicada
-                thumb.classList.add('active');
-                
-                // Adiciona active na imagem principal correspondente
-                if (mainImgs[thumbIndex]) {
-                    mainImgs[thumbIndex].classList.add('active');
-                    console.log(`Ativou imagem principal ${thumbIndex}`);
-                } else {
-                    console.error(`Imagem principal ${thumbIndex} não encontrada!`);
-                }
-            });
+// IMAGE HOVER SWAP
+document.querySelectorAll('.gallery-item').forEach(item => {
+    const mainImg = item.querySelector('.main-img');
+    if (!mainImg) return;
+    const originalSrc = mainImg.src;
+    const hoverSrc = mainImg.dataset.hover;
+    const container = item.querySelector('.main-image-container');
+
+    if (container && hoverSrc && hoverSrc !== originalSrc) {
+        container.addEventListener('mouseenter', () => {
+            mainImg.src = hoverSrc;
         });
-    });
-    
-    console.log('Sistema de miniaturas inicializado!');
+        container.addEventListener('mouseleave', () => {
+            mainImg.src = originalSrc;
+        });
+    }
+
+    let showingOriginal = true;
+    if (container) {
+        container.addEventListener('click', () => {
+            if (hoverSrc && hoverSrc !== originalSrc) {
+                showingOriginal = !showingOriginal;
+                mainImg.src = showingOriginal ? originalSrc : hoverSrc;
+            }
+        });
+    }
 });
 
-// Botão de compra - WhatsApp (com opção de caixa presente)
+// MODAL DE DETALHES
+const modal = document.getElementById('productModal');
+const modalMainImg = document.getElementById('modalMainImg');
+const modalThumbs = document.getElementById('modalThumbs');
+const modalName = document.getElementById('modalName');
+const modalDesc = document.getElementById('modalDesc');
+const modalSizes = document.getElementById('modalSizes');
+const modalPrice = document.getElementById('modalPrice');
+const modalBuyBtn = document.getElementById('modalBuyBtn');
+const modalGiftCheck = document.getElementById('modalGiftCheck');
+
+document.querySelectorAll('.btn-details').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const data = btn.dataset;
+        modalName.textContent = data.product;
+        modalDesc.textContent = data.desc;
+        modalSizes.textContent = data.sizes;
+
+        const card = btn.closest('.gallery-info');
+        const priceEl = card.querySelector('.price');
+        const priceDetailEl = card.querySelector('.price-detail');
+        modalPrice.textContent = priceEl ? priceEl.textContent : '';
+        if (priceDetailEl) {
+            modalPrice.textContent += ' — ' + priceDetailEl.textContent;
+        }
+
+        modalBuyBtn.dataset.product = data.product;
+        modalBuyBtn.dataset.sizes = data.sizesWhatsapp;
+        modalGiftCheck.checked = false;
+
+        const imgs = [data.img1, data.img2, data.img3, data.img4].filter(Boolean);
+        modalMainImg.src = imgs[0];
+        modalThumbs.innerHTML = '';
+        imgs.forEach((src, i) => {
+            const thumb = document.createElement('img');
+            thumb.src = src;
+            thumb.alt = 'Foto ' + (i + 1);
+            if (i === 0) thumb.classList.add('active');
+            thumb.addEventListener('click', () => {
+                modalMainImg.src = src;
+                modalThumbs.querySelectorAll('img').forEach(t => t.classList.remove('active'));
+                thumb.classList.add('active');
+            });
+            modalThumbs.appendChild(thumb);
+        });
+
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
+});
+
+// Fechar modal
+document.querySelector('.modal-overlay').addEventListener('click', closeModal);
+document.querySelector('.modal-close').addEventListener('click', closeModal);
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+function closeModal() {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+// WhatsApp
 document.querySelectorAll('.btn-buy').forEach(button => {
     button.addEventListener('click', (e) => {
         const productName = e.target.getAttribute('data-product');
         const sizes = e.target.getAttribute('data-sizes');
         const whatsappNumber = '5527998242810';
 
-        const galleryInfo = e.target.closest('.gallery-info');
-        const giftCheck = galleryInfo.querySelector('.gift-box-check');
-        const wantsGiftBox = giftCheck && giftCheck.checked;
+        let wantsGiftBox = false;
+        if (modal.classList.contains('active')) {
+            wantsGiftBox = modalGiftCheck.checked;
+        }
 
         let message = `Olá! Gostaria de comprar: *${productName}*\n\n`;
-
         if (sizes) {
             message += `Tamanhos/Opções disponíveis:\n${sizes.replace(/\|/g, '\n')}\n\n`;
             message += `Por favor, me informe qual tamanho deseja.\n\n`;
         }
-
         if (wantsGiftBox) {
-            message += `🎁 *Com Caixa Presente (+R$ 40,00)*\n`;
+            message += `🎁 *Com Caixa presente (+R$ 40,00)*\n`;
         }
-
         const encodedMessage = encodeURIComponent(message);
         window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
     });
 });
 
-
-// Preload das imagens para transição suave
-window.addEventListener('load', () => {
-    const allImages = document.querySelectorAll('.main-img, .thumb');
-    allImages.forEach(img => {
-        const tempImg = new Image();
-        tempImg.src = img.src;
-    });
+// Preload
+document.querySelectorAll('.main-img').forEach(img => {
+    if (img.dataset.hover) {
+        const temp = new Image();
+        temp.src = img.dataset.hover;
+    }
 });
