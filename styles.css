@@ -272,7 +272,7 @@ h1, h2, h3 {
 }
 
 .btn-buy {
-    background: var(--color-gold);
+    background: var(--color-green);
     color: var(--color-white);
     width: 100%;
     font-weight: 500;
@@ -400,7 +400,7 @@ section {
 
 .thumb.active {
     opacity: 1;
-    border-color: var(--color-gold);
+    border-color: var(--color-green);
 }
 
 /* Gallery Info */
@@ -434,7 +434,7 @@ section {
 .price {
     font-size: 1.5rem;
     font-weight: 500;
-    color: var(--color-gold);
+    color: var(--color-green);
     margin-bottom: 0.5rem;
     font-family: var(--font-display);
 }
@@ -667,18 +667,18 @@ section {
     margin-bottom: 1rem;
     cursor: pointer;
     padding: 0.6rem 0.8rem;
-    border: 1px solid rgba(212, 175, 55, 0.3);
+    border: 1px solid rgba(59, 42, 26, 0.3);
     border-radius: 4px;
     transition: var(--transition);
 }
 
 .gift-box-option:hover {
-    border-color: var(--color-gold);
-    background: rgba(212, 175, 55, 0.05);
+    border-color: var(--color-green);
+    background: rgba(59, 42, 26, 0.05);
 }
 
 .gift-box-check {
-    accent-color: var(--color-gold);
+    accent-color: var(--color-green);
     width: 18px;
     height: 18px;
     cursor: pointer;
@@ -733,7 +733,7 @@ section {
 
 .gift-box-text .price {
     font-size: 1.5rem;
-    color: var(--color-gold);
+    color: var(--color-green);
     font-family: var(--font-display);
 }
 
