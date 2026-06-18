@@ -172,7 +172,19 @@ document.querySelectorAll('.btn-buy').forEach(button => {
             message += `🎁 *Com Caixa presente (+R$ 40,00)*\n`;
         }
         const encodedMessage = encodeURIComponent(message);
+        if (typeof gtag === 'function') {
+            gtag('event', 'conversion', { send_to: 'GTAG_ID/CONVERSION_LABEL' });
+        }
         window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
+    });
+});
+
+// Conversão gtag para links WhatsApp diretos (contato, consulta, botão flutuante)
+document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
+    link.addEventListener('click', () => {
+        if (typeof gtag === 'function') {
+            gtag('event', 'conversion', { send_to: 'GTAG_ID/CONVERSION_LABEL' });
+        }
     });
 });
 
