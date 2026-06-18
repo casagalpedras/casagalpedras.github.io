@@ -813,21 +813,18 @@ section {
 }
 
 .gift-box-banner-inline {
-    background: var(--color-green);
-    padding: 3.5rem 0;
+    background: #2e2015;
+    border-top: 1px solid var(--color-gold);
+    border-bottom: 1px solid var(--color-gold);
+    margin-top: 3rem;
     margin-bottom: 0;
-    margin-left: calc(-50vw + 50%);
-    margin-right: calc(-50vw + 50%);
-    width: 100vw;
 }
 
 .gift-box-content {
-    max-width: 900px;
-    margin: 0 auto;
     display: flex;
     align-items: center;
     gap: 2.5rem;
-    padding: 2.5rem 3rem;
+    padding: 3.5rem 3rem;
 }
 
 .gift-box-content img {
@@ -841,14 +838,14 @@ section {
 
 .gift-box-text h3 {
     font-size: 2.2rem;
-    color: var(--color-white);
+    color: var(--color-gold);
     margin-bottom: 0.75rem;
     font-family: var(--font-display);
 }
 
 .gift-box-text p {
-    color: rgba(255, 255, 255, 0.85);
-    font-size: 1.05rem;
+    color: rgba(245, 242, 237, 0.85);
+    font-size: 1.25rem;
     line-height: 1.7;
     margin-bottom: 1.2rem;
 }
