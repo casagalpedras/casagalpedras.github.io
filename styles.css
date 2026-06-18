@@ -499,7 +499,7 @@ section {
     gap: 1.25rem;
     margin-top: 3rem;
     padding: 3.5rem 3rem;
-    background: var(--color-primary);
+    background: #2e2015;
     border-top: 1px solid var(--color-gold);
     border-bottom: 1px solid var(--color-gold);
 }
