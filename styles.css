@@ -491,6 +491,30 @@ section {
     color: rgba(255, 255, 255, 0.75);
 }
 
+.about-stone-cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-top: 3rem;
+    padding: 2.5rem 3rem;
+    background: rgba(212, 175, 55, 0.08);
+    border: 1.5px solid var(--color-gold);
+}
+
+.about-stone-cta__text h3 {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    color: var(--color-gold);
+    margin-bottom: 0.5rem;
+}
+
+.about-stone-cta__text p {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.7;
+    max-width: 520px;
+}
+
 /* Contact Section */
 .contact-info {
     display: grid;
@@ -625,7 +649,17 @@ section {
         grid-template-columns: 1fr;
         gap: 3rem;
     }
-    
+
+    .about-stone-cta {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 2rem;
+    }
+
+    .about-stone-cta__text p {
+        max-width: 100%;
+    }
+
     .gallery {
         grid-template-columns: 1fr;
         gap: 2rem;
