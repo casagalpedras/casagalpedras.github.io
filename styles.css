@@ -499,37 +499,40 @@ section {
     gap: 1.25rem;
     margin-top: 3rem;
     padding: 3.5rem 3rem;
-    background: #f2e8d0;
+    background: var(--color-green-light);
+    border-bottom: 1px solid var(--color-gold);
 }
 
 .about-stone-cta h3 {
     font-family: var(--font-display);
     font-size: 2.2rem;
-    color: var(--color-primary);
+    color: var(--color-gold);
     margin-bottom: 0;
 }
 
 .about-stone-cta p {
-    color: var(--color-text);
+    color: rgba(245, 242, 237, 0.85);
     line-height: 1.7;
     max-width: 520px;
 }
 
 .about-stone-cta__btn {
     display: inline-block;
-    background: var(--color-primary);
-    color: var(--color-white);
+    background: var(--color-gold);
+    color: var(--color-primary);
     padding: 0.85rem 2.2rem;
     font-family: var(--font-body);
     font-size: 0.85rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     text-decoration: none;
+    font-weight: 600;
     transition: background 0.2s;
 }
 
 .about-stone-cta__btn:hover {
-    background: var(--color-secondary);
+    background: #b8961e;
+    color: var(--color-white);
 }
 
 /* Contact Section */
