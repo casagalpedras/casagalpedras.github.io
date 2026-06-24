@@ -48,10 +48,45 @@ h1, h2, h3 {
     padding: 0 2rem;
 }
 
+/* Barra de anúncio */
+.announcement-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 38px;
+    background: var(--color-green);
+    color: var(--color-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1001;
+    text-align: center;
+    padding: 0 1rem;
+}
+
+.announcement-bar p {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    margin: 0;
+}
+
+@media (max-width: 480px) {
+    .announcement-bar p {
+        font-size: 0.65rem;
+        letter-spacing: 0.08em;
+        white-space: normal;
+        text-align: center;
+    }
+}
+
 /* Navegação */
 .navbar {
     position: fixed;
-    top: 0;
+    top: 38px;
     left: 0;
     right: 0;
     background: rgba(245, 242, 237, 0.95);
@@ -148,7 +183,7 @@ h1, h2, h3 {
     justify-content: center;
     position: relative;
     background: var(--color-light);
-    padding: 7rem 0 3rem;
+    padding: calc(7rem + 38px) 0 3rem;
 }
 
 .hero-container {
