@@ -181,7 +181,7 @@ document.querySelectorAll('.btn-buy').forEach(button => {
         }
         const encodedMessage = encodeURIComponent(message);
         if (typeof gtag === 'function') {
-            gtag('event', 'conversion', { send_to: 'GTAG_ID/CONVERSION_LABEL' });
+            gtag('event', 'conversion', { send_to: 'AW-18251460330/ZTvWCN61hMUcEOrd_P5D' });
         }
         window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
     });
@@ -191,7 +191,7 @@ document.querySelectorAll('.btn-buy').forEach(button => {
 document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
     link.addEventListener('click', () => {
         if (typeof gtag === 'function') {
-            gtag('event', 'conversion', { send_to: 'GTAG_ID/CONVERSION_LABEL' });
+            gtag('event', 'conversion', { send_to: 'AW-18251460330/ZTvWCN61hMUcEOrd_P5D' });
         }
     });
 });
