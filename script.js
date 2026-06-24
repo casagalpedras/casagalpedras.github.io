@@ -98,14 +98,22 @@ document.addEventListener('click', function(e) {
 
         document.getElementById('modalName').textContent = data.product;
         document.getElementById('modalDesc').textContent = data.desc;
-        document.getElementById('modalSizes').textContent = data.sizes;
 
-        const card = btn.closest('.gallery-info');
-        const priceEl = card.querySelector('.price');
-        const priceDetailEl = card.querySelector('.price-detail');
-        let priceText = priceEl ? priceEl.textContent : '';
-        if (priceDetailEl) priceText += ' — ' + priceDetailEl.textContent;
-        document.getElementById('modalPrice').textContent = priceText;
+        const sizesList = document.getElementById('modalSizes');
+        sizesList.innerHTML = '';
+        const sizeEntries = (data.sizesWhatsapp || '').split('|').map(s => s.trim()).filter(Boolean);
+        sizeEntries.forEach(entry => {
+            const match = entry.match(/^(.*)\(([^)]+)\)$/);
+            const li = document.createElement('li');
+            if (match) {
+                const label = match[1].trim();
+                const price = match[2].trim();
+                li.innerHTML = `<span>${label}</span><strong>${price}</strong>`;
+            } else {
+                li.textContent = entry;
+            }
+            sizesList.appendChild(li);
+        });
 
         document.getElementById('modalBuyBtn').dataset.product = data.product;
         document.getElementById('modalBuyBtn').dataset.sizes = data.sizesWhatsapp || '';

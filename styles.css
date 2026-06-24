@@ -1047,14 +1047,34 @@ section {
     margin-bottom: 1rem;
 }
 
-.modal-sizes {
-    font-size: 0.9rem;
-    color: var(--color-text-light);
-    font-style: italic;
-    margin-bottom: 1rem;
+.modal-sizes-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 0.5rem;
 }
 
-.modal-info .price {
+.modal-sizes-list li {
+    font-size: 1rem;
+    color: var(--color-primary);
+    padding: 0.4rem 0;
+    border-bottom: 1px solid var(--color-border, #e5e0d8);
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.modal-sizes-list li:last-child {
+    border-bottom: none;
+}
+
+.modal-sizes-list li strong {
+    font-weight: 600;
+}
+
+.modal-sizes-note {
+    font-size: 0.75rem;
+    color: var(--color-text-light);
+    font-style: italic;
     margin-bottom: 1rem;
 }
 
