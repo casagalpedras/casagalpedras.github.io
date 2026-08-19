@@ -183,6 +183,17 @@ document.querySelectorAll('.btn-buy').forEach(button => {
         if (typeof gtag === 'function') {
             gtag('event', 'conversion', { send_to: 'AW-18251460330/ZTvWCN61hMUcEOrd_P5D' });
         }
+        if (typeof fbq === 'function') {
+            // Não existe página de confirmação de pedido: a venda é fechada por WhatsApp,
+            // então o valor final só é definido na conversa. O valor abaixo é o preço do
+            // primeiro tamanho listado (o mais barato/inicial exibido ao cliente), extraído
+            // dinamicamente de data-sizes — NÃO é o valor fechado do pedido. Ajustar
+            // manualmente (ex: via evento de compra enviado do WhatsApp/CRM) se precisar
+            // do valor real de cada venda.
+            const priceMatch = sizes && sizes.match(/R\$\s*([\d.,]+)/);
+            const purchaseValue = priceMatch ? parseFloat(priceMatch[1].replace(/\./g, '').replace(',', '.')) : 0;
+            fbq('track', 'Purchase', { value: purchaseValue, currency: 'BRL', content_name: productName });
+        }
         window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
     });
 });
